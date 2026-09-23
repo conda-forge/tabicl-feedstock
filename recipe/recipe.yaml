@@ -1,13 +1,13 @@
 context:
-  version: "2.1.1"
+  version: "2.2.0"
 
 recipe:
   name: tabicl-suite
   version: ${{ version }}
 
 source:
-  url: https://github.com/soda-inria/tabicl/releases/download/v${{ version }}/tabicl-${{ version }}.tar.gz
-  sha256: 7abdb1fa878e7a1edfa1c6606bf4189e9cccc20935e8011d7e690f4693c9c5c5
+  url: https://github.com/soda-inria/tabicl/archive/refs/tags/v${{ version }}.tar.gz
+  sha256: 2d121d2b82d0fd76aab19ad9230ee38404aed11f3bcd5792bc2d5403e2b4d165
 
 build:
   number: 0
@@ -46,8 +46,8 @@ outputs:
             - tabicl
           pip_check: true
 
-  # Full-featured installation, corresponding to the non-documentation
-  # functionality provided by upstream's `tabicl[all]`.
+  # Full-featured runtime installation, providing the forecast, SHAP,
+  # fine-tuning, and pre-training extras.
   - package:
       name: tabicl
 
@@ -60,7 +60,6 @@ outputs:
 
         # forecast
         - pandas >=2.1.2
-        - gluonts >=0.16.0
         - statsmodels >=0.14.5
         - matplotlib-base >=3.10.3
 
